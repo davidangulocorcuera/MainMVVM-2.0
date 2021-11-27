@@ -4,7 +4,7 @@ package com.cheapy.cheapy.modules.main
 import android.os.Bundle
 import com.cheapy.cheapy.R
 import com.cheapy.cheapy.databinding.ActivityMainBinding
-import david.angulo.cheapy.modules.base.BaseActivity
+import com.cheapy.cheapy.modules.base.BaseActivity
 
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(

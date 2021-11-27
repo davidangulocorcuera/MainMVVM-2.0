@@ -4,7 +4,7 @@ package com.cheapy.cheapy.modules.home
 import android.view.View
 import com.cheapy.cheapy.R
 import com.cheapy.cheapy.databinding.FragmentHomeBinding
-import david.angulo.cheapy.modules.base.BaseFragment
+import com.cheapy.cheapy.modules.base.BaseFragment
 
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(

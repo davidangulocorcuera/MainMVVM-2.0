@@ -1,4 +1,4 @@
-package david.angulo.cheapy.modules.base
+package com.cheapy.cheapy.modules.base
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.cheapy.cheapy.R
 import com.cheapy.cheapy.modules.utils.setVisible
@@ -17,7 +18,7 @@ import com.cheapy.cheapy.modules.utils.setVisible
  * */
 
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private val mViewModelClass: Class<VM>) :
-    AppCompatActivity() {
+    AppCompatActivity(), GlobalAction {
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
@@ -29,7 +30,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
     }
 
     val viewModel by lazy {
-        ViewModelProviders.of(this).get(mViewModelClass)
+        ViewModelProvider(this).get(mViewModelClass)
     }
 
     /**
@@ -68,5 +69,14 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
         val progressContainer = findViewById<View>(R.id.progressContainer)
         progressContainer?.setVisible(hasShade)
         progress?.setVisible(show)
+    }
+
+    override fun onBackPressed() {
+        val fragmentManager = supportFragmentManager
+        if (fragmentManager.fragments.isNotEmpty() && fragmentManager.fragments[0] is BaseFragment<*, *>) {
+            (fragmentManager.fragments[0] as BaseFragment<*, *>).onBackPressed()
+        } else {
+            back(this)
+        }
     }
 }

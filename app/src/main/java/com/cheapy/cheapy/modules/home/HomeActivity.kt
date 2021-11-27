@@ -3,7 +3,7 @@ package com.cheapy.cheapy.modules.home
 import android.os.Bundle
 import com.cheapy.cheapy.R
 import com.cheapy.cheapy.databinding.ActivityHomeBinding
-import david.angulo.cheapy.modules.base.BaseActivity
+import com.cheapy.cheapy.modules.base.BaseActivity
 
 class HomeActivity : BaseActivity<HomeViewModel, ActivityHomeBinding>(
     HomeViewModel::class.java

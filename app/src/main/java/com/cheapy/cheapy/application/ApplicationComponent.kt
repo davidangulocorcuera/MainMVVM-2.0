@@ -3,7 +3,7 @@ package com.cheapy.cheapy.application
 import android.content.Context
 import android.content.SharedPreferences
 import dagger.Component
-import david.angulo.cheapy.modules.base.BaseViewModel
+import com.cheapy.cheapy.modules.base.BaseViewModel
 import javax.inject.Singleton
 
 

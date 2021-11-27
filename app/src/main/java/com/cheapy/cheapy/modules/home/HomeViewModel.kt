@@ -2,7 +2,7 @@ package com.cheapy.cheapy.modules.home
 
 import android.app.Application
 import com.cheapy.cheapy.application.App
-import david.angulo.cheapy.modules.base.BaseViewModel
+import com.cheapy.cheapy.modules.base.BaseViewModel
 
 class HomeViewModel(app: Application) : BaseViewModel(app) {
 

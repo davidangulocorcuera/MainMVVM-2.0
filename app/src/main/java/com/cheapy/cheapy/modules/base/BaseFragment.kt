@@ -1,4 +1,4 @@
-package david.angulo.cheapy.modules.base
+package com.cheapy.cheapy.modules.base
 
 
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
 /**
@@ -16,7 +17,7 @@ import androidx.lifecycle.ViewModelProviders
  * */
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private val mViewModelClass: Class<VM>) :
-    Fragment() {
+    Fragment(), GlobalAction {
     lateinit var viewModel: VM
     open lateinit var mBinding: DB
     val navigator: Navigator
@@ -37,7 +38,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private va
     protected abstract fun viewCreated(view: View?)
 
 
-    private fun getViewM(): VM = ViewModelProviders.of(this).get(mViewModelClass)
+    private fun getViewM(): VM = ViewModelProvider(this).get(mViewModelClass)
     open fun onInject() {}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +52,8 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private va
         viewCreated(view)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        init(inflater, container!!)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        container?.apply {  init(inflater, container) }
         init()
         super.onCreateView(inflater, container, savedInstanceState)
         return mBinding.root
@@ -68,8 +66,9 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private va
     }
 
     private val baseActivity: BaseActivity<*, *>?
-        get() {
-            return activity as? BaseActivity<*, *>
-        }
+    get() { return activity as? BaseActivity<*, *> }
 
+    fun onBackPressed(){
+        back(requireContext())
+    }
 }

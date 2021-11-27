@@ -1,4 +1,4 @@
-package david.angulo.cheapy.modules.base
+package com.cheapy.cheapy.modules.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
