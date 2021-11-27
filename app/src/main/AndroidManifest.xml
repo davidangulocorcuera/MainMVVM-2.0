@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="david.angulo.consilia">
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="com.cheapy.cheapy">
 
     <application
-        android:name="david.angulo.onion.application.App"
+        android:name="com.cheapy.cheapy.application.App"
         android:allowBackup="false"
         android:icon="@drawable/ic_social_network_logo"
         android:label="@string/app_name"
@@ -16,32 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
 
         <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:exported="true"
+            android:name="com.cheapy.cheapy.modules.home.HomeActivity" />
         <activity
-            android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
-            <intent-filter><action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter>
-        </activity>
-        <activity android:name="david.angulo.onion.modules.home.HomeActivity" />
-        <activity
-            android:name="david.angulo.onion.modules.main.MainActivity"
+            android:exported="true"
+            android:name="com.cheapy.cheapy.modules.main.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

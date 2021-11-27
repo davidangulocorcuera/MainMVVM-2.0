@@ -6,12 +6,12 @@
     <data>
         <variable
             name="viewModel"
-            type="david.angulo.onion.modules.main.MainViewModel" />
+            type="com.cheapy.cheapy.modules.main.MainViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="david.angulo.onion.modules.main.MainActivity">
+        tools:context=".modules.main.MainActivity">
 
         <FrameLayout
             android:id="@+id/fragmentContainerMain"
